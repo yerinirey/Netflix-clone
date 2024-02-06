@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Movie extends StatelessWidget {
+class WillLikeMovie extends StatelessWidget {
   final String header;
-  const Movie({
+  const WillLikeMovie({
     super.key,
     required this.header,
   });
@@ -10,25 +10,34 @@ class Movie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          header,
-          style: Theme.of(context).textTheme.titleLarge,
+        // 마음 헤더
+        Row(
+          children: [
+            const Icon(
+              Icons.thumb_up,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 4),
+            Text(
+              header,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ],
         ),
         const SizedBox(
           height: 6,
         ),
         SizedBox(
           height: 156,
-          child: movieList(),
+          child: willLikeMovieList(),
         ),
       ],
     );
   }
 }
 
-ListView movieList() {
+ListView willLikeMovieList() {
   return ListView.separated(
       clipBehavior: Clip.none,
       shrinkWrap: true, // limit height, 리스트뷰 크기 고정
